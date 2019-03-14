@@ -5,6 +5,7 @@ Click==7.0
 cryptography==2.1.4
 Flask==1.0.2
 flask-heroku==0.1.9
+Flask-Script==2.0.6
 Flask-SQLAlchemy==2.3.2
 gunicorn==19.9.0
 idna==2.6
@@ -16,6 +17,7 @@ MarkupSafe==1.1.1
 psycopg2==2.7.7
 pycrypto==2.6.1
 pyfcm==1.4.5
+pygobject==3.26.1
 pyxdg==0.25
 requests==2.21.0
 requests-toolbelt==0.9.1
