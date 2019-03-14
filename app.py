@@ -3,7 +3,7 @@ from flask import request
 from flask import render_template
 from flask import redirect
 
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 from flask.ext.heroku import Heroku
 
