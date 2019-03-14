@@ -32,11 +32,7 @@ def hello():
     
     return redirect('/')
   else:
-    p1 = Person("mateus", "abcdefghijlm")
-    p2 = Person("italo", "vovomalfalda")
-    lp = []
-    lp.append(p1)
-    lp.append(p2)
+    lp = Person.query.all()
 
     return render_template('main.html', pessoas=lp)
 
