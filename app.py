@@ -2,13 +2,12 @@ from flask import Flask, jsonify
 from flask import request
 from flask import render_template
 from flask import redirect
-
 from flask_sqlalchemy import SQLAlchemy
 
-from flask.ext.heroku import Heroku
 
 app = Flask(__name__)
-heroku = Heroku(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+
 db = SQLAlchemy(app)
 
 class Person(db.Model):
