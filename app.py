@@ -4,6 +4,8 @@ from flask import render_template
 from flask import redirect
 from flask_sqlalchemy import SQLAlchemy
 
+from push import enviar_push
+
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -25,10 +27,14 @@ class Person(db.Model):
 def hello():
   if request.method == 'POST':
     keys = request.form.getlist('cbox')
-    text = request.form.getlist('tarea')
+    text = request.form.get('tarea')
+    titulo = request.form.get('input')
 
     print(keys)
+    print(titulo)
     print(text)
+
+    enviar_push(keys, titulo, text)
     
     return redirect('/')
   else:
@@ -44,5 +50,12 @@ def add_pessoa():
 
   return jsonify({'status': 'ok'}), 201
 
+@app.route("/remover/<nome>")
+def remove_pessoa(nome):
+  p = Person.query.filter_by(nome=nome).first()
+  db.session.delete(p)
+  db.session.commit()
+
+  return redirect('/')
 if __name__ == '__main__':
   app.run(debug=True,host='0.0.0.0')
